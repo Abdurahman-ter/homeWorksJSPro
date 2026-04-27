@@ -14,9 +14,9 @@
       ]);
 
       const arrayOfStudents = [...students].filter((elem, index, arr) => {
-       return index === arr.findIndex(item => item.id === elem.id)
-      })
-      console.log(arrayOfStudents)
+        return index === arr.findIndex((item) => item.id === elem.id);
+      });
+      console.log(arrayOfStudents);
     </script>
   </body>
 </html>
