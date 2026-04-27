@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const students = [
+        { id: 1, name: "Вася" },
+        { id: 2, name: "Петя" },
+        { id: 1, name: "Вася" },
+      ];
+
+      const uniId = [...new Set(students.map(student => student.id))]
+
+      const result = uniId.map(id => {
+        return students.find(student => student.id === id)
+      })
+      console.log(result)
+    </script>
+  </body>
+</html>
