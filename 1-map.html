@@ -7,16 +7,18 @@
   </head>
   <body>
     <script>
-      const students = new Set([
+      const students = [
         { id: 1, name: "Вася" },
         { id: 2, name: "Петя" },
         { id: 1, name: "Вася" },
-      ]);
+      ];
 
-      const arrayOfStudents = [...students].filter((elem, index, arr) => {
-        return index === arr.findIndex((item) => item.id === elem.id);
-      });
-      console.log(arrayOfStudents);
+      const uniId = [...new Set(students.map(student => student.id))]
+
+      const result = uniId.map(id => {
+        return students.find(student => student.id === id)
+      })
+      console.log(result)
     </script>
   </body>
 </html>
