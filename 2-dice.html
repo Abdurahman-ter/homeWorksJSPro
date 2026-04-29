@@ -1,20 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        function diceGame(maxNum) {
-            const minNum = 1;
+      function diceGame(diceNum) {
+        const minNum = 1;
 
-            const throwDice = Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
-            return throwDice
-        }
+        const diceStr = diceNum;
+        const arrOfDice = diceStr.split("");
+        arrOfDice.shift();
+        const diceSum = Number(arrOfDice.join(""));
 
-        console.log(diceGame(6))
+        const throwDice = Math.floor(
+          Math.random() * (diceSum - minNum + 1) + minNum,
+        );
+        return throwDice;
+      }
+
+      console.log(diceGame("d10"));
     </script>
-</body>
+  </body>
 </html>
