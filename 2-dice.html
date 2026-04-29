@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function diceGame(diceNum) {
+        const minNum = 1;
+
+        const diceStr = diceNum;
+        const arrOfDice = diceStr.split("");
+        arrOfDice.shift();
+        const diceSum = Number(arrOfDice.join(""));
+
+        const throwDice = Math.floor(
+          Math.random() * (diceSum - minNum + 1) + minNum,
+        );
+        return throwDice;
+      }
+
+      console.log(diceGame("d10"));
+    </script>
+  </body>
+</html>
