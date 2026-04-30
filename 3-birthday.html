@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const user = {
+            name: "vlad",
+            birthDay: "2008-5-7"
+        }
+
+        function validateBirthday(str) {
+            const nowDate = new Date()
+            let userBirthDay = new Date(str)
+            let difference = nowDate.getTime() - userBirthDay.getTime()
+            let fullYears = difference / (1000 * 60 *60 * 24 * 365)
+
+            if (fullYears > 14) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        console.log(validateBirthday(user.birthDay))
+
+    </script>
+</body>
+</html>
