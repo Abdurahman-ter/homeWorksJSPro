@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="timer_cover"></div>
+    <script>
+        function calendar() {
+          const timerCoverEl = document.querySelector(".timer_cover")
+            
+          setInterval(() => {
+              const now = new Date();
+              const newYear = new Date(now.getFullYear() + 1, 0, 1);
+              let defrence = newYear.getTime() - now.getTime();
+              
+              let defrenceMonth = 1000 * 60 * 60 * 24 * 30;
+              let defrenceDay = 1000 * 60 * 60 * 24;
+              let defrenceHour = 1000 * 60 * 60;
+              let defrenceMinute = 1000 * 60;
+              let defrenceSecond = 1000;
+              
+              const month = Math.floor(defrence / defrenceMonth)
+              defrence = defrence % defrenceMonth;
+              
+              const day = Math.floor(defrence / defrenceDay)
+              defrence = defrence % defrenceDay;
+              
+              const hour = Math.floor(defrence / defrenceHour)
+              defrence = defrence % defrenceHour;
+              
+              const minute = Math.floor(defrence / defrenceMinute)
+              defrence = defrence % defrenceMinute;
+              
+              const second = Math.floor(defrence / defrenceSecond)
+              
+              const result = `${month} месяцев, ${day} дней, ${hour} часов, ${minute} минут, ${second} секунд`;
+
+              timerCoverEl.textContent = result
+        }, 1000);
+      }
+      calendar()
+    </script>
+  </body>
+</html>
