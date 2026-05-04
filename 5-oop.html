@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const Person = function (race, name, language) {
+        this.race = race;
+        this.name = name;
+        this.language = language;
+      };
+      Person.prototype.talk = function () {
+        console.log(`Меня зовут ${this.name} я говорю на ${this.language}`);
+      };
+
+      const Ork = function (weapon) {
+        this.weapon = weapon;
+      };
+      Ork.prototype = Object.create(Person);
+
+      Ork.prototype.hit = function () {
+        console.log("Атакую");
+      };
+
+      const Elf = function (magik) {
+        this.magik = magik;
+      };
+      Elf.prototype = Object.create(Person);
+      
+      Elf.prototype.spell = function() {
+        console.log("Эксплужен")
+      }
+
+
+      const delf = new Ork("sword")
+      delf.hit()
+
+      const chaska = new Elf("lith")
+      chaska.spell()
+   </script>
+  </body>
+</html>
