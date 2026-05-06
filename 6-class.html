@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Car {
+            #mark;
+            #model;
+            #mileage
+            constructor(mark, model, mileage) {
+                this.#mark = mark;
+                this.#model = model;
+                this.#mileage = mileage;
+            }
+
+            get checkMileage() {
+                return this.#mileage;
+            }
+
+            set changeMileage(newMileage) {
+                if(Number(newMileage) > Number(this.#mileage)) {
+                    this.#mileage = newMileage;
+                    return this.#mileage;
+                } else {
+                    throw new Error("incorrect number")
+                }
+            }
+
+            info() {
+                return `model: ${this.#model}, mark: ${this.#mark}, mileage: ${this.#mileage}`
+            }
+        }
+
+        const car1 = new Car("Honda", "Acord", "1000");
+        console.log(car1)
+        console.log(car1.checkMileage)
+        console.log(car1.changeMileage = "1500")
+        console.log(car1.info())
+        
+    </script>
+</body>
+</html>
