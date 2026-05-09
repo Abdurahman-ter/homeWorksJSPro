@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(race, name, language) {
+                this.race = race
+                this.name = name
+                this.language = language
+            }
+
+            talk() {
+                return "Hello"
+            }
+        }
+
+        class Ork extends Person {
+            constructor(race, name, language, weapon) {
+                super(race, name, language);
+                this.weapon = weapon;
+            }
+
+            hit() {
+                return `hit with ${this.weapon}`
+            }
+
+            talk() {
+                return `I am ${this.race} 0_0`
+            }
+        }
+        
+        class Elf extends Person {
+            constructor(race, name, language, magic) {
+                super(race, name, language);
+                this.magic = magic;
+            }
+
+            mag() {
+                return `explution with ${this.magic}`
+            }
+
+            talk() {
+                return `I am ${this.race} >_<`
+            }
+        }
+
+        const vatson = new Ork("ork", "vatson", "orchi", "sword")
+        console.log(vatson.talk())
+        console.log(vatson.hit())
+        
+        const rika = new Elf("elf", "rika", "elfi", "fire")
+        console.log(rika.talk())
+        console.log(rika.mag())
+    </script>
+</body>
+</html>
