@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+        function fixBilling(amount) {
+          return amount;
+        }
+
+        function hourBilling(amount, hour) {
+          return amount * hour;
+        }
+
+        function itemBilling(amount, element) {
+            return amount * element;
+        }
+
+      class Billing {
+        constructor(amount) {
+          this.amount = amount;
+        }
+
+        calculateTotal(method, hourOrElement) {
+            const result = method(this.amount, hourOrElement)
+            return result;
+        }
+      }
+
+      const site = new Billing(10);
+      console.log(site.calculateTotal(hourBilling, 2))
+    </script>
+  </body>
+</html>
