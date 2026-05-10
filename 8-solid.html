@@ -8,31 +8,54 @@
   <body>
     <script>
 
-        function fixBilling(amount) {
-          return amount;
-        }
-
-        function hourBilling(amount, hour) {
-          return amount * hour;
-        }
-
-        function itemBilling(amount, element) {
-            return amount * element;
-        }
-
       class Billing {
         constructor(amount) {
           this.amount = amount;
         }
 
-        calculateTotal(method, hourOrElement) {
-            const result = method(this.amount, hourOrElement)
-            return result;
+        calculateTotal() {
+            return;
         }
       }
 
-      const site = new Billing(10);
-      console.log(site.calculateTotal(hourBilling, 2))
+      class FixBilling extends Billing {
+        constructor(amount) {
+            super(amount)
+        }
+
+        calculateTotal() {
+            return this.amount;
+        }
+      }
+
+      class HourBilling extends Billing {
+        constructor(amount) {
+            super(amount)
+        }
+
+        calculateTotal(hour) {
+            return this.amount * hour;
+        }
+      }
+      
+      class ItemBilling extends Billing {
+        constructor(amount) {
+            super(amount)
+        }
+
+        calculateTotal(element) {
+            return this.amount * element;
+        }
+      }
+
+      const site1 = new FixBilling(10);
+      console.log(site1.calculateTotal())
+
+      const site2 = new HourBilling(10);
+      console.log(site2.calculateTotal(2))
+
+      const site3 = new ItemBilling(10);
+      console.log(site3.calculateTotal(3))
     </script>
   </body>
 </html>
