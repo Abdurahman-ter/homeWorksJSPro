@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+      class Billing {
+        constructor(amount) {
+          this.amount = amount;
+        }
+
+        calculateTotal() {
+            return;
+        }
+      }
+
+      class FixBilling extends Billing {
+        constructor(amount) {
+            super(amount)
+        }
+
+        calculateTotal() {
+            return this.amount;
+        }
+      }
+
+      class HourBilling extends Billing {
+        constructor(amount) {
+            super(amount)
+        }
+
+        calculateTotal(hour) {
+            return this.amount * hour;
+        }
+      }
+      
+      class ItemBilling extends Billing {
+        constructor(amount) {
+            super(amount)
+        }
+
+        calculateTotal(element) {
+            return this.amount * element;
+        }
+      }
+
+      const site1 = new FixBilling(10);
+      console.log(site1.calculateTotal())
+
+      const site2 = new HourBilling(10);
+      console.log(site2.calculateTotal(2))
+
+      const site3 = new ItemBilling(10);
+      console.log(site3.calculateTotal(3))
+    </script>
+  </body>
+</html>
