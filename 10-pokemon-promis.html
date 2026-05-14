@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const mainReqest = new XMLHttpRequest();
+      //   mainReqest.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto");
+      //   mainReqest.send();
+
+      //   mainReqest.addEventListener("load", function () {
+      //     const data = JSON.parse(this.responseText);
+      //     const abilityUrl = data.abilities[0].url;
+
+      //     const secondRequest = new XMLHttpRequest();
+      //     secondRequest.open("GET", abilityUrl);
+      //     secondRequest.send();
+
+      //     secondRequest.addEventListener("load", function () {
+      //       const data2 = JSON.parse(this.responseText);
+      //       for (const element of data2.effect_entries) {
+      //         if (element.language.name === "en") {
+      //           console.log(element.effect);
+      //         }
+      //       }
+      //     });
+      //   });
+
+      fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+        .then((promise) => {
+            if(!promise.ok){
+                throw new Error("HTTP " + promise.status)
+            }
+          return promise.json();
+        })
+        .then((data) => {
+          return data.abilities[0].ability.url;
+        })
+        .then((data2) => {
+          return fetch(data2);
+        })
+        .then((promise) => {
+            if(!promise.ok){
+                throw new Error("HTTP " + promise.status)
+            }
+          return promise.json();
+        })
+        .then((data) => {
+          for (const element of data.effect_entries) {
+            if (element.language.name === "en") {
+              console.log(element.effect);
+            }
+          }
+        }).catch(err => console.log(err))
+    </script>
+  </body>
+</html>
