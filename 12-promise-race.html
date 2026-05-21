@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const promArray = [];
+
+      const pro1 = new Promise((res, rej) => {
+        setTimeout(() => {
+          res("result pro1");
+        }, 100);
+      });
+      const pro2 = new Promise((res, rej) => {
+        setTimeout(() => {
+          res("result pro2");
+        }, 40);
+      });
+      const pro3 = new Promise((res, rej) => {
+        setTimeout(() => {
+          res("result pro3");
+        }, 300);
+      });
+
+      promArray.push(pro1);
+      promArray.push(pro2);
+      promArray.push(pro3);
+
+      async function race(arrProm) {
+        const response = await new Promise((res, rej) => {
+            for (const prom of arrProm) {
+                prom.then(res).catch(rej) 
+            }
+        });
+        return response;
+      }
+
+      race(promArray).then((data) => console.log(data));
+    </script>
+  </body>
+</html>
