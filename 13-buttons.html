@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bottuns-style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <button class="button">Нажми</button>
+        <button class="button">Нажми</button>
+        <button class="button">Нажми</button>
+        <button class="button">Нажми</button>
+        <button class="button">Нажми</button>
+    </div>
+    <div class="counter">0</div>
+
+    <script>
+        const containerEl = document.querySelector(".container")
+        const counterEl = document.querySelector(".counter")
+
+        containerEl.addEventListener("click", (event) => {
+
+            if(!event.target.classList.contains("button")) {
+                return;
+            }
+
+            for (const child of containerEl.children) {
+                child.classList.remove("active")
+                child.textContent = "Нажми"
+            }
+
+            event.target.classList.add("active")
+            event.target.textContent = "Нажата"
+
+            counterEl.textContent = Number(counterEl.textContent) + 1;
+        })
+    </script>
+</body>
+</html>
